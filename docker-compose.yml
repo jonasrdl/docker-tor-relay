@@ -1,0 +1,17 @@
+version: "2.4"
+services:
+  torrelay:
+    build:
+      context: .
+      args:
+        ARCH: arm64
+    environment:
+      - OR_PORT=1234
+      - DIR_PORT=1235
+      - NICK=CHANGEME
+      - EMAIL=CHANGE@ME.com
+      - TYPE=middle
+    volumes:
+      - ./torrelaydata:/var/lib/tor
+    network_mode: host
+    restart: unless-stopped
